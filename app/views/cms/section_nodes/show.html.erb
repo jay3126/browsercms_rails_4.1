@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <ul class="list-group">
+    <ul id="sitemap" class="list-group">
       <%= render partial: 'section_node', locals: {section_node: @root_section_node,
                                                    parent: nil,
                                                    children: @sitemap[@root_section_node]} %>

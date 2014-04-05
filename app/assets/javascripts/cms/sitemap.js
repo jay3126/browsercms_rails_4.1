@@ -15,7 +15,7 @@ var Sitemap = function() {
 Sitemap.STATE = 'cms.sitemap.open_folders';
 
 Sitemap.prototype.select = function(selectedRow) {
-  $('.nav-list-span').removeClass('active');
+  $('.list-group-item-span').removeClass('active');
   selectedRow.addClass('active');
   newContentButton.updateButtons(selectedRow);
 };
@@ -148,10 +148,10 @@ jQuery(function($){
       axis: 'y',
       delay: 250,
       cursor: 'move',
-      stack: '.nav-list-span'
+      stack: '.list-group-item-span'
     });
 
-    $('#sitemap .nav-list-span').droppable({
+    $('#sitemap .list-group-item-span').droppable({
       hoverClass: "droppable",
       drop: function(event, ui) {
         var elementToMove = ui.draggable.parents('.nav-list').first();
@@ -168,7 +168,7 @@ jQuery(function($){
         } else {
           sitemap.updateDepth(ui.draggable, targetDepth);
           // Drop AFTER pages
-          var newParentId = elementDroppedOn.parents('.nav-list:first').find('.nav-list-span:first').data('id');
+          var newParentId = elementDroppedOn.parents('.list-group:first').find('.list-group-item-span:first').data('id');
           elementToMove.insertAfter(elementDroppedOn);
         }
 
@@ -192,7 +192,7 @@ jQuery(function($){
   // Ensure this only loads on sitemap page.
   if ($('#sitemap').exists()) {
     sitemap.restoreOpenState();
-    $('.nav-list-span').on('click', function(event) {
+    $('.list-group-item-span').on('click', function(event) {
       sitemap.toggleOpen($(this));
       sitemap.select($(this));
     });
