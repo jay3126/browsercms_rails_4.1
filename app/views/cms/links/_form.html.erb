@@ -1,8 +1,11 @@
-<%= page_title_with_buttons f %>
-<div class="padded row-fluid clearfix">
-  <%= f.input :name %>
-  <%= f.input :url %>
-  <%= f.input :new_window, label: "Open In New Window?" %>
+<h1 class="page-header"><%= page_title%></h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Link</div>
+  <div class="panel-body">
+    <%= f.input :name %>
+    <%= f.input :url %>
+    <%= f.input :new_window, label: "Open In New Window?" %>
+  </div>
 </div>
 <%= bottom_buttons f %>
 
