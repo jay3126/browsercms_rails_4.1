@@ -4,6 +4,7 @@
     <%= javascript_include_tag 'jquery' %>
     <% if @show_toolbar %>
         <%= javascript_include_tag 'cms/page_editor' %>
+        <%= stylesheet_link_tag 'cms/page_content_editing' %>
         <%= csrf_meta_tags %>
     <% end %>
     <%= javascript_include_tag 'cms/site' %>

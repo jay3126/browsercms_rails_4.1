@@ -1,0 +1,29 @@
+.cms-container {
+  background-color: #efefef;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  .cms-toolbar {
+    background-color: #505050;
+    padding: 2px;
+  }
+  .cms-toolbar-connector {
+    background-color: #858585;
+    padding: 2px;
+  }
+  .cms-btn {
+    background-color: white;
+    color: #505050;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 3px 6px;
+    font-size: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+}
