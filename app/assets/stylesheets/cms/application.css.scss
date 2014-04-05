@@ -30,9 +30,11 @@ $danger: #e74c3c;
 
 body {
   padding-top: 130px;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
-.intro {
-  padding: 40px 15px;
-  text-align: center;
+h1.page-header {
+  margin-top: 20px;
+  font-size: 24px;
 }
+

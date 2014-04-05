@@ -11,7 +11,7 @@ module Cms
     end
 
     def button_menu(location)
-      container_class = 'form-actions clearfix'
+      container_class = 'col-sm-12'
       container_element = 'div'
       content_tag container_element, class: container_class do
         yield if block_given?
