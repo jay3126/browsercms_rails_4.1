@@ -1,13 +1,15 @@
 <%# Buttons for blocks need to be aware of whether the underlying block is publishable or not. %>
 <%= button_menu location do %>
+<div class="btn-toolbar" role="toolbar">
+  <div class="btn-group">
+    <%= f.button :save_draft, location: location if @block.class.publishable? %>
+  </div>
+  <div class="pull-right">
+    <%= cancel_button location %>
     <% if @block.class.publishable? %>
-    <%= f.button :publish, location: location %>
+    <%= f.button :publish, location: location, class: "btn-default" %>
     <% else %>
-    <%= f.button :save, location: location %>
+    <%= f.button :save, location: location, class: "btn-default" %>
     <% end %>
-
-    <div class="btn-group right">
-      <%= cancel_button location %>
-      <%= f.button :save_draft, location: location if @block.class.publishable? %>
-    </div>
+  </div>
 <% end %>

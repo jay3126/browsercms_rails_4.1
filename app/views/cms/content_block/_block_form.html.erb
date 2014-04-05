@@ -1,12 +1,19 @@
 <%= content_block_form_for(@block) do |f| %>
-    <%= page_title_with_buttons f %>
+  <h1 class="page-header"><%= page_title%></h1>
     <%= render 'form_errors', form: f %>
     <%= render 'exception', :object => @exception if @exception %>
     <%= render :partial => 'version_conflict_error', :locals => {:other_version => @other_version, :your_version => @block} if @other_version %>
     <%= render 'hidden_fields', f: f %>
-    <div class="padded row-fluid">
-      <div class="span8 main-content">
-        <%= render block_form, f: f %>
+    <div class="row">
+      <div class="col-sm-8 main-content">
+        <div class="panel panel-default">
+          <div class="panel-heading">General</div>
+          <div class="panel-body">
+            <div class="col-sm-12">
+              <%= render block_form, f: f %>
+            </div>
+          </div>
+        </div>
       </div>
       <%= render partial: 'sidebar', layout: 'sidebar_layout' unless @block.new_record? %>
     </div>

@@ -14,7 +14,7 @@ SimpleForm.setup do |config|
     b.use :hint, wrap_with: { tag: :p, class: 'help-block' }
   end
 
-  config.wrappers :browsercms, tag: 'div', class: 'control-group row', error_class: 'error' do |b|
+  config.wrappers :browsercms, tag: 'div', class: 'form-group row', error_class: 'error' do |b|
     b.use :html5
     b.use :placeholder
     b.use :label
