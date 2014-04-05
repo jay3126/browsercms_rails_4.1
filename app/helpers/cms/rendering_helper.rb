@@ -6,7 +6,7 @@ module Cms
   module RenderingHelper
 
     def page_content_iframe(path)
-      content_tag "iframe", "" , src: path, id: 'page_content', frameborder: 0, width: '100%', height: '80%'
+      content_tag "iframe", "" , src: path, id: 'page_content', frameborder: 0, width: '100%', height: '100%'
       #<iframe id="page_content" src="<%= url_for engine_aware_path(@block, :inline) %>" frameborder="0" width="100%" height="80%"></iframe>
 
     end

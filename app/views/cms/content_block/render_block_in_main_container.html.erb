@@ -1,7 +1,6 @@
 <% if current_user.able_to_edit?(@block) %>
     <% content_for :html_head do %>
         <%= javascript_include_tag 'cms/page_editor' %>
-        <%= stylesheet_link_tag 'cms/page_content_editing' %>
         <%= csrf_meta_tags %>
     <% end %>
 <% end %>

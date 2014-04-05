@@ -123,7 +123,7 @@ module Cms
       # Ensure all engine specific assets are compiled when rake asset:precompile is run.
       app.config.assets.precompile += ['cms/page_toolbar.js', 'cms/page_editor.js', 'cms/site.js']
 
-      app.config.assets.precompile += ['cms/page_editor.css', 'cms/page_content_editing.css', 'cms/site.js']
+      app.config.assets.precompile += ['cms/page_editor.css', 'cms/site.js']
 
       # Ckeditor
       app.config.assets.precompile += ['bcms/ckeditor_inline.js', 'bcms/ckeditor.js', 'bcms/ckeditor_standard_config.js']

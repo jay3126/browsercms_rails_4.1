@@ -1,0 +1,12 @@
+// Added to the page editing frame
+html, body {
+  height: 100%
+}
+
+.edit-bar {
+  padding: 10px;
+  margin-bottom: 5px;
+  .status {
+    padding-top: 7px;
+  }
+}
