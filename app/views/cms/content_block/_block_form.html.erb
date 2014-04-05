@@ -6,14 +6,7 @@
     <%= render 'hidden_fields', f: f %>
     <div class="row">
       <div class="col-sm-<%= @block.new_record? ? 12 : 8 %> main-content">
-        <div class="panel panel-default">
-          <div class="panel-heading">General</div>
-          <div class="panel-body">
-            <div class="col-sm-12">
-              <%= render block_form, f: f %>
-            </div>
-          </div>
-        </div>
+        <%= render block_form, f: f %>
       </div>
       <%= render partial: 'sidebar', layout: 'sidebar_layout' unless @block.new_record? %>
     </div>

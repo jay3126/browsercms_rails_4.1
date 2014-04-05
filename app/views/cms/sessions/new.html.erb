@@ -1,16 +1,16 @@
 <% use_page_title 'Sign in' %>
-<%= render 'cms/application/page_title' %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <%= render layout: 'cms/application/main_with_sidebar' do %>
-        <%= f.input :login, :required => false, :autofocus => true %>
-        <%= f.input :password, :required => false %>
-        <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-        <%= render "devise/shared/links" %>
+<div class="panel panel-default">
+  <div class="panel-heading">Sign in</div>
+  <div class="panel-body">
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <%= f.input :login, :required => false, :autofocus => true %>
+      <%= f.input :password, :required => false %>
+      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+      <%= button_menu :bottom do %>
+          <%= f.button :submit, "Sign in", class: 'right btn-primary' %>
+          <%= render "devise/shared/links" %>
+      <% end %>
     <% end %>
-    <%= render layout: 'cms/application/row' do %>
-        <%= button_menu :bottom do %>
-            <%= f.button :submit, "Sign in", class: 'right btn-primary' %>
-        <% end %>
-    <% end %>
-<% end %>
+  </div>
+</div>

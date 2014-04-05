@@ -9,8 +9,8 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <%= render 'layouts/cms/main_menu' %>
 </div>
-<%= render 'cms/sites/flash' %>
 <div class="container">
+  <%= render 'cms/sites/flash' %>
   <% if content_for?(:before_main_content) %>
       <%= yield :before_main_content  %>
   <% end %>

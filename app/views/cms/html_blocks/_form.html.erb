@@ -1,3 +1,10 @@
-<%= f.input :name %>
-<%= f.input :content, as: :text_editor %>
-<%= f.cms_tag_list %>
+<div class="panel panel-default">
+  <div class="panel-heading">Text</div>
+  <div class="panel-body">
+    <div class="col-sm-12">
+      <%= f.input :name %>
+      <%= f.input :content, as: :text_editor %>
+      <%= f.cms_tag_list %>
+    </div>
+  </div>
+</div>

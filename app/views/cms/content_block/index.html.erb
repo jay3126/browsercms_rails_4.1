@@ -1,7 +1,6 @@
 <% use_page_title "Assets - #{content_type.display_name_plural}" %>
 
 <h1 class="page-header"><%= content_type.display_name_plural%></h1>
-
 <div class="row">
   <%= form_for @search_filter, url: engine_aware_path(@search_filter.model_class), html: {class: 'col-sm-4 form-search'}, method: :get do |f| %>
   <div class="input-group">
@@ -21,12 +20,14 @@
         </button>
         <%= render partial: 'layouts/cms/content_types', locals: {library: false, id: 'asset-selector-menu'} %>
       </div>
-
-      <%= submit_tag "Publish", class: "right btn btn-small btn-primary primary-cta" if content_type.model_class.publishable? %>
+      
+      <%= link_to "New", new_engine_aware_path(@search_filter.model_class), class: "btn btn-default"%>
 
       <div class="btn-group right">
         <%= submit_tag "Delete", class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete all these records?'} %>
       </div>
+
+      <%= submit_tag "Publish", class: "right btn btn-small btn-primary primary-cta" if content_type.model_class.publishable? %>
 
       <%= yield :bulk_actions if content_for?(:bulk_actions) %>
     </div>
