@@ -46,9 +46,9 @@ module Cms
     # @return [String] HTML (HTML safe)
     def draft_icon_tag(content, options={})
       if content.respond_to?(:draft?) && content.draft?
-        '<span class="draft">Draft</span>'.html_safe
+        '<span class="label label-danger">Draft</span>'.html_safe
       elsif options[:force]
-        '<span class="published">Published</span>'.html_safe
+        '<span class="label label-success">Published</span>'.html_safe
       end
     end
 

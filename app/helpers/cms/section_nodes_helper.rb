@@ -40,7 +40,7 @@ module Cms
     # @return [String] HTML (HTML safe)
     def hidden_icon_tag(content)
       if content.respond_to?(:hidden?) && content.hidden?
-        '<span aria-hidden="true" class="permission-icon icon-eye-blocked"></span>'.html_safe
+        '<span aria-hidden="true" class="glyphicon glyphicon-eye-close text-muted"></span>'.html_safe
       else
         ''
       end
@@ -48,7 +48,7 @@ module Cms
 
     def guest_accessible_icon_tag(parent, content)
       unless content.accessible_to_guests?(@public_sections, parent)
-        '<span aria-hidden="true" class="permission-icon icon-locked"></span>'.html_safe
+        '<span aria-hidden="true" class="glyphicon glyphicon-lock text-muted"></span>'.html_safe
       else
         ''
       end
@@ -57,9 +57,9 @@ module Cms
     # Generate the HTML for a given section node.
     def icon_tag(section_node, children)
       name = if section_node.ancestors.size == 0
-               'earth'
+               'globe'
              elsif section_node.home?
-               'house'
+               'home'
              elsif section_node.link?
                'link'
              elsif section_node.page?
@@ -67,11 +67,11 @@ module Cms
              elsif section_node.section? && children.empty?
                'folder-open'
              elsif section_node.section?
-               'folder'
+               'folder-close'
              else
                'list' # All other content types.
              end
-      content_tag("span", "", {'aria-hidden' => true, class: "type-icon icon-#{name}"})
+      content_tag("span", "", {'aria-hidden' => true, class: "glyphicon glyphicon-#{name}"})
     end
 
     # Marks a section to determine if it can be opened/closed in the sitemap.

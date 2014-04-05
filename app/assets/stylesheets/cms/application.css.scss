@@ -11,7 +11,22 @@
  *= require_self
  */
 
+$main-blue: #095aa6;
+$light-blue: #0079c1;
+
+$primary: $main-blue;
+$secondary: $light-blue;
+
+$light: darken(white,6%);
+$gray: #9a9999;
+$dark: #505050;
+
+$success: #2ecc71;
+$warning: #f1c40f;
+$danger: #e74c3c;
+
 @import "bootstrap";
+@import "sitemap";
 
 body {
   padding-top: 130px;
