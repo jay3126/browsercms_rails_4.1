@@ -6,7 +6,7 @@ module Cms
 
     def cancel_button(location, label="Cancel")
       klass = ['btn']
-      klass << 'btn-small' if location == :top
+      klass << 'btn-default' if location == :top
       link_to label, :back, class: klass
     end
 

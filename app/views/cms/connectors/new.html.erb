@@ -2,7 +2,7 @@
    use_page_title"Reuse Content"
 %>
 <%= render layout: 'page_title' do %>
-    <%= link_to "Back to Page", page_path(@page), class: 'btn btn-small right' %>
+    <%= link_to "Back to Page", page_path(@page), class: 'btn btn-default' %>
 <% end %>
 
 <%= form_tag new_connector_path, :method => :get do %>
