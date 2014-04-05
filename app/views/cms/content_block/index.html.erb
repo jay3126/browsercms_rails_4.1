@@ -22,14 +22,7 @@
       </div>
       
       <%= link_to "New", new_engine_aware_path(@search_filter.model_class), class: "btn btn-default"%>
-
-      <div class="btn-group right">
-        <%= submit_tag "Delete", class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete all these records?'} %>
-      </div>
-
-      <%= submit_tag "Publish", class: "right btn btn-small btn-primary primary-cta" if content_type.model_class.publishable? %>
-
-      <%= yield :bulk_actions if content_for?(:bulk_actions) %>
+      
     </div>
   <% end %>
 </div>
@@ -80,6 +73,13 @@
             </tr>
         <% end %>
         </tbody>
+        <tfoot>
+          <td colspan="5">
+            <%= submit_tag "Delete", class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete all these records?'} %>
+            <%= submit_tag "Publish", class: "right btn btn-small btn-primary primary-cta" if content_type.model_class.publishable? %>
+            <%= yield :bulk_actions if content_for?(:bulk_actions) %>
+          </td >
+        </tfoot>
       </table>
     </div>
 

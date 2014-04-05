@@ -1,13 +1,18 @@
 <% use_page_title "Assign Task" %>
 <% content_for :buttons, 'save_buttons' %>
 <% content_for :sidebar do %>
-    <div class="sidebar-block">
-      <h4 class="gray">Assigning Page:</h4>
+  <div class="panel panel-default">
+    <div class="panel-heading">Assigning Page</div>
+    <div class="panel-body">
       <p><%= link_to @page.name, page_path(@page), target: '_blank' %></p>
     </div>
+  </div>
 <% end %>
 <%= simple_form_for(@task, :url => @task.new_record? ? page_tasks_path(@page) : page_task_path(@page, @task)) do |f| %>
     <%= render layout: 'form_with_buttons', locals: {f: f} do %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Task</div>
+      <div class="panel-body">
         <%= f.association :assigned_to,
                           label: "Assign To",
                           collection: Cms::User.active.able_to_edit_or_publish_content.order("first_name, last_name, login"),
@@ -16,7 +21,8 @@
         %>
         <%= f.input :due_date, as: :date_picker, hint: "Leave blank for no due date" %>
         <%= f.input :comment %>
-
+      </div>
+    </div>
     <% end %>
 <% end %>
 
