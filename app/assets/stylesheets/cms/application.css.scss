@@ -38,3 +38,11 @@ h1.page-header {
   font-size: 24px;
 }
 
+.top-navi {
+  background-color: #434A54;
+  .navbar-nav a {
+    color: #AAB2BD !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
