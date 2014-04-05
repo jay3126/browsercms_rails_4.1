@@ -1,24 +1,25 @@
 <% use_page_title "Versions: '#{@block.name}'" %>
 
-<%= render layout: 'page_title' do %>
-    <%= link_to "Back", :back, class: 'btn btn-small right' %>
-<% end %>
-<%= render layout: 'main_content' do %>
-  <table id="blocks" class="data table table-bordered table-striped table-hover">
-    <thead>
-          <tr>
-            <th>Version</th>
-            <th>Comment</th>
-            <th>Date</th>
-            <th>Editor</th>
-            <th>Action</th>
-          </tr>
-     </thead>
-    <tbody>
-      <% @block.versions.order("version desc").each_with_index do |r, i| %>
-        <%= render partial: 'version', locals: {revision: r, original: @block,  i: i} %>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
-
+<div class="col-sm-12">
+  <%= render layout: 'page_title' do %>
+      <%= link_to "Back", :back, class: 'btn btn-default' %>
+  <% end %>
+  <%= render layout: 'main_content' do %>
+    <table id="blocks" class="table table-striped">
+      <thead>
+            <tr>
+              <th>Version</th>
+              <th>Comment</th>
+              <th>Date</th>
+              <th>Editor</th>
+              <th>Action</th>
+            </tr>
+       </thead>
+      <tbody>
+        <% @block.versions.order("version desc").each_with_index do |r, i| %>
+          <%= render partial: 'version', locals: {revision: r, original: @block,  i: i} %>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
