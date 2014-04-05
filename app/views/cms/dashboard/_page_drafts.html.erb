@@ -1,8 +1,9 @@
-<div id="page_drafts">
-  <h3>Page Drafts</h3>
-
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Page Drafts</h3>
+  </div>
   <%= form_tag cms.publish_pages_path, :method => :put do %>
-      <table class="data table table-bordered table-rounded">
+      <table class="table table-striped">
         <thead>
           <tr>
             <% unless @unpublished_pages.empty? %>

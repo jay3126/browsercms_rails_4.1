@@ -1,49 +1,23 @@
-@charset "utf-8";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
 
-$experimental-support-for-khtml: false;
-@import "compass/reset";
-@import "compass/css3";
-@import "compass/typography";
-@import "compass/css3/box";
+@import "bootstrap";
 
-// Basic items for making modals work
-@import "bootstrap/mixins";
-@import "bootstrap/variables";
-// @import "bootstrap/modals";
+body {
+  padding-top: 130px;
+}
 
-@import 'core';
-
-@import "cms/includes/_rem";
-@import "cms/includes/_animation";
-
-
-/* IMPORTING STYLES */
-@import 'cms/styles/_base-grid';
-@import 'cms/styles/_text';
-@import 'cms/styles/_images';
-@import 'cms/styles/_lists';
-@import 'cms/styles/_buttons';
-@import 'cms/styles/_tables';
-@import 'cms/styles/_forms';
-@import 'cms/styles/_dropdown';
-@import 'cms/styles/_progress';
-@import 'cms/styles/_alerts';
-@import 'cms/styles/_modal';
-@import 'cms/styles/_glyph';
-
-
-
-
-/* PAGE STYLE & LAYOUT IMPORTS */
-@import 'cms/_base';
-
-@import 'cms/_colors';
-@import 'cms/_cms-buttons';
-@import 'cms/_cms-forms';
-@import 'cms/_nav';
-@import 'cms/_submenu';
-@import 'cms/_main-area';
-@import 'cms/_sitemap';
-@import 'cms/_assets';
-@import 'cms/_dashboard';
-@import 'cms/_sidebar';
+.intro {
+  padding: 40px 15px;
+  text-align: center;
+}
