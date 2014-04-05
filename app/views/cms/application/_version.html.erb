@@ -17,7 +17,7 @@
 </td>
 <td>
   <% unless current %>
-      <%= link_to 'Revert to', engine(original).polymorphic_path([:revert, original], version: revision.version), class: 'btn btn-mini btn-danger', method: :put %>
+      <%= link_to 'Revert to', engine(original).polymorphic_path([:revert, original], version: revision.version), class: 'btn btn-sm btn-danger', method: :put %>
   <% end %>
 </td>
 </tr>

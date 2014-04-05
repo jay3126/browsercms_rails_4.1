@@ -11,8 +11,8 @@ module Cms
     end
 
     def button_menu(location)
-      container_class = location == :top ? 'span6 top-buttons' : 'form-actions clearfix'
-      container_element = location == :top ? 'span' : 'div'
+      container_class = 'form-actions clearfix'
+      container_element = 'div'
       content_tag container_element, class: container_class do
         yield if block_given?
       end

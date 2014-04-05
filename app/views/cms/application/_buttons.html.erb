@@ -1,7 +1,11 @@
 <%= button_menu location do %>
-    <%= f.button :publish, location: location %>
-    <div class="btn-group right">
-      <%= cancel_button location %>
+  <div class="btn-toolbar" role="toolbar">
+    <div class="btn-group">
       <%= f.button :save_draft, location: location %>
     </div>
+    <div class="pull-right">
+      <%= cancel_button location %>
+      <%= f.button :publish, location: location, class: "btn-primary" %>
+    </div>
+  </div>
 <% end %>

@@ -27,7 +27,7 @@ end
 
 SimpleForm.setup do |config|
   config.boolean_style = :inline
-  config.button_class = 'btn btn-primary'
+  config.button_class = 'btn btn-default'
   config.error_notification_tag = :div
   config.error_notification_class = 'alert alert-danger'
   config.browser_validations = false
