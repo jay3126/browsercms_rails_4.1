@@ -1,20 +1,39 @@
 <% use_page_title "Users" %>
-<%= render layout: 'page_title', locals: {span: 'span3'} do %>
-    <%= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-small btn-primary right" %>
-<% end %>
-<div class="row-fluid padded">
-    <%= form_tag(users_path, :method => :get, class: 'form-search right') do %>
-            <%= group_filter %>
-            <%= text_field_tag "key_word", params[:key_word], placeholder: "Search Users...", class: 'search-query' %>
-            <label class="boolean optional control-label checkbox" for="show_expired">
-                      <%= check_box_tag "show_expired", "yes", params[:show_expired] %>
-                      Show inactive?</label>
-
-            <%= submit_tag "Search", id: 'user_search_submit', class: 'hide' %>
-        <% end %>
+<h1 class="page-header"><%= page_title %></h1>
+<div class="row">
+  <%= form_tag(users_path, :method => :get, class: 'form-search') do %>
+    <div class="col-sm-6">
+      <div class="input-group">
+        <%= text_field_tag "key_word", params[:key_word], placeholder: "Search Users...", class: 'form-control search-query' %>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <%= group_filter %>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="form-group">
+        <label class="boolean optional control-label checkbox" for="show_expired">
+          <%= check_box_tag "show_expired", "yes", params[:show_expired] %>
+          Show inactive?
+        </label>
+      </div>
+    </div>
+  <% end %>
+  <div class="col-sm-2">
+    <%= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-default pull-right" %>
+  </div>
 </div>
+
 <%= render layout: 'main_content' do %>
-    <table class="data table table-bordered table-rounded table-hover table-striped" width="100%">
+  <div class="col-sm-12">
+    <table class="data table table-bordered table-striped" width="100%">
       <thead>
       <tr>
         <th>Name</th>
@@ -62,4 +81,5 @@
     <% elsif @users.total_pages > 1 %>
         <%= render_pagination @users, Cms::User %>
     <% end %>
+  </div>
 <% end %>

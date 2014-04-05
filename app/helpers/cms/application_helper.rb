@@ -148,7 +148,7 @@ HTML
                                                     "id",
                                                     "name",
                                                     params[:group_id].to_i),
-                class: 'group_filter'
+                class: 'group_filter form-control'
       )
     end
 
