@@ -9,7 +9,7 @@
             <div class="panel-body">
               <%= draft_icon_tag(@block, force: true) %>
               <% if current_user.able_to?(:publish_content) %>
-                <h4>Visibility</h4>
+                <h6>Visibility</h6>
                 <%= f.input :visibility, label: false, collection: @page.visibilities, prompt: false, input_html: {class: 'input-block-level'} %>
               <% end %>
             </div>

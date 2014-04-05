@@ -1,38 +1,41 @@
 <%
    use_page_title"Reuse Content"
 %>
-<%= render layout: 'page_title' do %>
+<h1 class="page-header"><%= page_title %></h1>
+<div class="row">
+  <div class="col-sm-6">
     <%= link_to "Back to Page", page_path(@page), class: 'btn btn-default' %>
-<% end %>
-
-<%= form_tag new_connector_path, :method => :get do %>
-    <%= hidden_field_tag :page_id, @page.to_param %>
-    <%= hidden_field_tag :container, @container %>
-    <div class="row-fluid padded">
-      <label for="block_type">
-        Choose Type of Content
-        <%= select_tag "block_type", options_for_select(Cms::ContentType.connectable.to_a.map { |ct| [ct.display_name, ct.content_block_type] }, @block_type.content_block_type), :onchange => 'this.form.submit()' %>
-      </label>
-    </div>
-<% end %>
+  </div>
+  <div class="col-sm-6">
+    <%= form_tag new_connector_path, :method => :get, class: "pull-right" do %>
+        <%= hidden_field_tag :page_id, @page.to_param %>
+        <%= hidden_field_tag :container, @container %>
+        <label for="block_type">
+          <%= select_tag "block_type", options_for_select(Cms::ContentType.connectable.to_a.map { |ct| [ct.display_name, ct.content_block_type] }, @block_type.content_block_type), :onchange => 'this.form.submit()', class: "form-control" %>
+        </label>
+    <% end %>
+  </div>
+</div>
 
 <%= render layout: 'main_content' do %>
-    <table class="table table-bordered">
+  <div class="col-sm-12">
+    <table class="table table-bordered table-striped">
       <thead>
       <tr>
-        <th>Add?</th>
         <th>Name</th>
         <th>Updated</th>
         <th>Uses</th>
+        <th></th>
       </tr>
       </thead>
       <% @blocks.each do |block| %>
           <tr>
-            <td><%= link_to "Add", connectors_path(page_id: @page.to_param, container: @container, :connectable_type => @block_type.content_block_type, connectable_id: block.id), class: "btn btn-mini btn-primary", method: :post %></td>
             <td><%= link_to block.name, engine_aware_path(block), target: '_blank' %></td>
             <td><%= block.updated_at.to_formatted_s(:date) %></td>
             <td><%= block.connected_pages.count %></td>
+            <td><%= link_to "Add", connectors_path(page_id: @page.to_param, container: @container, :connectable_type => @block_type.content_block_type, connectable_id: block.id), class: "btn btn-default", method: :post %></td>
           </tr>
       <% end %>
     </table>
+  </div>
 <% end %>
