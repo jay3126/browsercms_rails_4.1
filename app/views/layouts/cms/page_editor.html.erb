@@ -17,7 +17,6 @@
         <% else %>
             <span class="label label-success" id="page-status-label">Published</span>
         <% end %>
-        <%= render 'add_content_modal' %>
         <span class="last-saved">Last saved: &nbsp;<strong><%= format_date(@page.updated_at) %></strong></span>
       </div>
       <div class="pull-right">
@@ -88,5 +87,6 @@
     <%= render 'cms/sites/flash' %>
   </div>
   <%= yield %>
+  <%= render 'add_content_modal' %>
 </body>
 </html>

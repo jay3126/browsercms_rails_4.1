@@ -128,6 +128,7 @@ jQuery(function($){
   // Click the 'Add Content' button (PLUS) when editing content.
   $('.cms-add-content').click(function() {
     $('#modal-add-content', window.parent.document).modal({
+      backdrop: true,
       remote: $(this).data('remote')
     });
   });
