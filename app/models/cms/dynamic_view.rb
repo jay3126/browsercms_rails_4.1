@@ -1,6 +1,8 @@
 module Cms
   class DynamicView < ActiveRecord::Base
-    store_templates
+    #store_templates
+    after_save :write_file_to_disk
+    after_destroy :remove_file_from_disk
 
     extend DefaultAccessible
 
@@ -62,6 +64,23 @@ module Cms
 
     def self.default_body
       ""
+    end
+
+    def write_file_to_disk
+      if respond_to?(:file_path) && !file_path.blank?
+        FileUtils.mkpath(File.dirname(file_path))
+        open(file_path, 'w') { |f| f << body }
+      end
+    end
+
+    def self.write_all_to_disk!
+      all(:conditions => {:deleted => false}).each { |v| v.write_file_to_disk }
+    end
+
+    def remove_file_from_disk
+      if respond_to?(:file_path) && File.exists?(file_path)
+        File.delete(file_path)
+      end
     end
 
     def set_publish_on_save

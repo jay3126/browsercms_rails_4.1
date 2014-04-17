@@ -51,8 +51,7 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: :p, class: "help-block" }
   end
 
-  config.wrappers :horizontal, tag: :div, class: 'form-group', error_class: 'has-error',
-                    label_html: { class: 'col-sm-3 col-md-3 col-lg-2 control-label' } do |b|
+  config.wrappers :horizontal, tag: :div, class: 'form-group', error_class: 'has-error', label_html: { class: 'col-sm-3 col-md-3 col-lg-2 control-label' } do |b|
     b.use :html5
     b.use :min_max
     b.use :maxlength
@@ -101,8 +100,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :inline, tag: :div, class: 'form-group', error_class: 'has-error',
-                    label_html: { class: 'sr-only' } do |b|
+  config.wrappers :inline, tag: :div, class: 'form-group', error_class: 'has-error', label_html: { class: 'sr-only' } do |b|
     b.use :html5
     b.use :min_max
     b.use :placeholder
@@ -137,4 +135,48 @@ SimpleForm.setup do |config|
       end
     end
   end
+
+  # copied from following browsercms
+  # https://github.com/browsermedia/browsercms/blob/6eb76b2c292eeb43345cb5e974181ec06e10ceb0/lib/cms/configure_simple_form_bootstrap.rb
+
+  config.wrappers :bootstrap, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.use :input
+    b.use :error, wrap_with: {tag: 'span', class: 'help-inline'}
+    b.use :hint, wrap_with: {tag: 'p', class: 'help-block'}
+  end
+
+  config.wrapper_mappings = { :boolean => :checkbox }
+
+  config.wrappers :prepend, tag: 'div', class: "form-group", error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.wrapper tag: 'div', class: 'input-prepend' do |prepend|
+      prepend.use :input
+    end
+    b.use :hint, wrap_with: {tag: 'span', class: 'help-block'}
+    b.use :error, wrap_with: {tag: 'span', class: 'help-inline'}
+  end
+
+  config.wrappers :append, tag: 'div', class: "form-group", error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.wrapper tag: 'div', class: 'input-append' do |append|
+      append.use :input
+    end
+    b.use :hint, wrap_with: {tag: 'span', class: 'help-block'}
+    b.use :error, wrap_with: {tag: 'span', class: 'help-inline'}
+  end
+
+  # Wrappers for forms and inputs using the Twitter Bootstrap toolkit.
+  # Check the Bootstrap docs (http://twitter.github.com/bootstrap)
+  # to learn about the different styles for forms and inputs,
+  # buttons and other elements.
+  config.default_wrapper = :bootstrap
+
+
 end

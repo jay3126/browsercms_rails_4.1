@@ -20,8 +20,8 @@ FormBuilder.prototype.newField = function(field_type) {
 };
 
 FormBuilder.prototype.addPreviewFieldToForm = function(field_type) {
-  $("#placeHolder").load($('#placeHolder').data('new-path') + '?field_type=' + field_type + ' .control-group', function() {
-    var newField = $("#placeHolder").find('.control-group');
+  $("#placeHolder").load($('#placeHolder').data('new-path') + '?field_type=' + field_type + ' .form-group', function() {
+    var newField = $("#placeHolder").find('.form-group');
     newField.insertBefore('#placeHolder');
     formBuilder.enableFieldButtons();
     formBuilder.resetAddFieldButton();
@@ -39,7 +39,7 @@ FormBuilder.prototype.removeCurrentField = function() {
 
 // Function that triggers when users click the 'Delete' field button.
 FormBuilder.prototype.confirmDeleteFormField = function() {
-  formBuilder.field_being_editted = $(this).parents('.control-group');
+  formBuilder.field_being_editted = $(this).parents('.form-group');
 
   var path = $(this).attr('data-path');
   if (path == "") {
@@ -54,7 +54,7 @@ FormBuilder.prototype.confirmDeleteFormField = function() {
 // Function that triggers when users click the 'Edit' field button.
 FormBuilder.prototype.editFormField = function() {
   // This is the overall container for the entire field.
-  formBuilder.field_being_editted = $(this).parents('.control-group');
+  formBuilder.field_being_editted = $(this).parents('.form-group');
   $('#modal-edit-field').modal({
     show: true,
     remote: $(this).attr('data-edit-path')

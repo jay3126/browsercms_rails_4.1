@@ -136,7 +136,7 @@ jQuery(function($){
 // Automatically enable date_picker controls
 jQuery(function($){
     if ($.datepicker) {
-        $('input.date_picker').datepicker({ changeFirstDay: false, changeMonth: true, changeYear: true, closeText: '', showButtonPanel: true, dateFormat: '<%= Cms::DatePicker.jquery_format %>' });
+        $('input.date_picker').datepicker({ changeFirstDay: false, changeMonth: true, changeYear: true, closeText: 'Done', showButtonPanel: true, dateFormat: '<%= Cms::DatePicker.jquery_format %>' });
     }
 });
 

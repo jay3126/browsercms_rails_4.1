@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.datepicker
  */
 
 $main-blue: #095aa6;
@@ -46,3 +47,5 @@ h1.page-header {
     padding-bottom: 5px;
   }
 }
+
+.form-group .checkbox, .form-group .radio{padding-left:20px;}
