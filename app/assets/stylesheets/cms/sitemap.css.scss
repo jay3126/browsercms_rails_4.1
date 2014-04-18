@@ -14,11 +14,21 @@
     display: none;
   }
   .list-group-item {
+    padding: 0px;
     &:before {
       display: none;
     }
 
     .list-group-item-span {
+      display: block;
+      clear: both;
+      width: 100%;
+      margin: 0;
+      padding: 5px;
+      &:hover {
+        cursor: pointer;
+        background: rgba($gray,0.175);
+      }
       &.droppable {
         background: $light-blue;
       }
