@@ -26,7 +26,7 @@ module Cms
 
     # When sitemap initially renders, we only want to show first level.
     def initial_visibility_class(section_node)
-      section_node.depth >= 1 ? 'hide' : ''
+      section_node.depth >= 1 ? 'display: none' : ''
     end
 
     # Returns a css class for determine sitemap depth.
@@ -40,7 +40,7 @@ module Cms
     # @return [String] HTML (HTML safe)
     def hidden_icon_tag(content)
       if content.respond_to?(:hidden?) && content.hidden?
-        '<span aria-hidden="true" class="glyphicon glyphicon-eye-close text-muted"></span>'.html_safe
+        '<span aria-hidden="true" class="glyphicon glyphicon-eye-close text-danger"></span>'.html_safe
       else
         ''
       end
@@ -71,7 +71,7 @@ module Cms
              else
                'list' # All other content types.
              end
-      content_tag("span", "", {'aria-hidden' => true, class: "glyphicon glyphicon-#{name}"})
+      content_tag("span", "", {'aria-hidden' => true, class: "type-icon glyphicon glyphicon-#{name}"})
     end
 
     # Marks a section to determine if it can be opened/closed in the sitemap.
