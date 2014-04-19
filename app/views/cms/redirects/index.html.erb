@@ -1,7 +1,10 @@
 <% use_page_title "Redirects" %>
 <%= render layout: 'page_title' do %>
-    <%= link_to "Add", new_redirect_path, class: 'btn btn-primary btn-small right' %>
+  <p class="pull-right">
+    <%= link_to "Add", new_redirect_path, class: 'btn btn-default' %>
+  </p>
 <% end %>
+<div class="col-sm-12">
 <%= render layout: 'main_content' do %>
     <table class="data cms-content-table table table-striped table-bordered table-hover">
       <thead>
@@ -23,3 +26,4 @@
       <% end %>
     </table>
 <% end %>
+</div>
