@@ -1,12 +1,11 @@
 <% use_page_title "Page Routes" %>
 <%= render layout: 'page_title' do %>
-    <%= button_menu :top do %>
-        <div class="btn-group right">
-          <%= link_to("View Rails Routes", routes_path, :class => "btn btn-primary btn-small") %>
-        </div>
-        <%= link_to "Add", new_page_route_path, class: 'btn btn-primary btn-small right' %>
-    <% end %>
+  <p class="pull-right">
+    <%= link_to("View Rails Routes", routes_path, :class => "btn btn-default") %>
+    <%= link_to "Add", new_page_route_path, class: 'btn btn-default' %>
+  </p>
 <% end %>
+<div class="col-sm-12">
 <%= render layout: 'main_content' do %>
   <table class="data table table-bordered table-rounded table-hover table-striped">
 	<thead>  
@@ -31,3 +30,4 @@
 <% if @page_routes.total_pages > 1 %>
   <%= render_pagination @page_routes, Cms::PageRoute %>
 <% end %>
+</div>
