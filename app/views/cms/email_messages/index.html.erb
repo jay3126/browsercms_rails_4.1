@@ -1,7 +1,7 @@
 <% use_page_title "Email Messages" %>
 <%= render layout: 'page_title' do
 end %>
-
+<div class="col-sm-12">
 <%= render layout: 'main_content' do %>
     <table class="data table table-striped table-bordered table-hover">
       <thead>
@@ -34,3 +34,4 @@ end %>
 <% if @messages.total_pages > 1 %>
     <%= render_pagination @messages, Cms::EmailMessage %>
 <% end %>
+</div>
