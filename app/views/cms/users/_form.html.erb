@@ -1,5 +1,5 @@
 <%= simple_form_for(@user.becomes(Cms::User), html: {autocomplete: 'off'}) do |f| %>
-    <%=  page_title_with_buttons(f, 'save_buttons') %>
+    <h1 class="page-header"><%= page_title %></h1>
     <%= render layout: 'main_with_sidebar' do %>
         <%= render :partial => 'user_fields', :locals => {:f => f} unless @change_password %>
         <%= render :partial => 'password', :locals => {:f => f} if @user.new_record? %>

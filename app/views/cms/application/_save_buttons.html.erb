@@ -1,7 +1,7 @@
 <%# Generic Save/Cancel used by a number of views. %>
 <%= button_menu location do %>
+  <div class="pull-right">
     <%= f.button :save, location: location %>
-    <div class="btn-group right">
-      <%= cancel_button location %>
-    </div>
+    <%= cancel_button location %>
+  </div>
 <% end %>
