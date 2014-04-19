@@ -5,7 +5,7 @@
   </div>
 <% end %>
 
-<div class="padded row-fluid">
+<div class="row">
   <%= form_tag routes_path, :method => :get do %>
     <label>
       Path to Test: <%= text_field_tag :path, @path, :size => 50 %>
@@ -17,6 +17,7 @@
     <% end %>
   <% end %>
 </div>
+<div class="col-sm-12">
 <%= render layout: 'main_content' do %>
 <table class="data cms-content-table table table-striped table-bordered table-hover">
   <thead>  
@@ -27,11 +28,14 @@
         <th>Result</th>
 	  </tr>
   </thead>
-  <% for route in @routes %><tr>
-    <td><%=h route[:name] %></td>
-    <td><%=h route[:verb] %></td>
-    <td><%=h route[:segs] %></td>
-    <td><%=h route[:reqs] %></td>
-  </tr><% end %>
-</table>
+  <% for route in @routes %>
+    <tr>
+      <td><%=h route[:name] %></td>
+      <td><%=h route[:verb] %></td>
+      <td><%=h route[:segs] %></td>
+      <td><%=h route[:reqs] %></td>
+    </tr>
   <% end %>
+</table>
+<% end %>
+</div>
