@@ -1,24 +1,24 @@
 <% use_page_title "Versions: '#{@page.name}' Page" %>
-<div class="col-sm-12">
-  <%= render layout: 'page_title' do %>
-      <%= link_to "Back to Page", :back, class: 'btn btn-default' %>
-  <% end %>
-  <%= render layout: 'main_content' do %>
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>Version</th>
-          <th>Comment</th>
-          <th>Date</th>
-          <th>Editor</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% @page.versions.order("version desc").each_with_index do |r, i| %>
-            <%= render partial: 'version', locals: {revision: r, original: @page,  i: i} %>
-        <% end %>
-        </tbody>
-      </table>
-  <% end %>
-</div>
+<%= render layout: 'page_title' do %>
+    <%= link_to "Back to Page", :back, class: 'btn btn-default' %>
+<% end %>
+<%= render layout: 'main_content' do %>
+  <div class="col-sm-12">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Version</th>
+        <th>Comment</th>
+        <th>Date</th>
+        <th>Editor</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @page.versions.order("version desc").each_with_index do |r, i| %>
+          <%= render partial: 'version', locals: {revision: r, original: @page,  i: i} %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
