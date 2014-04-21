@@ -1,9 +1,23 @@
 <%= simple_form_for(@user.becomes(Cms::User), html: {autocomplete: 'off'}) do |f| %>
     <h1 class="page-header"><%= page_title %></h1>
     <%= render layout: 'main_with_sidebar' do %>
-        <%= render :partial => 'user_fields', :locals => {:f => f} unless @change_password %>
-        <%= render :partial => 'password', :locals => {:f => f} if @user.new_record? %>
-        <%= f.association :groups, as: :check_boxes %>
+      <div class="panel panel-default">
+        <div class="panel-heading">General</div>
+        <div class="panel-body">
+          <%= render :partial => 'user_fields', :locals => {:f => f} unless @change_password %>
+          <%= render :partial => 'password', :locals => {:f => f} if @user.new_record? %>
+        </div>
+      </div>
+      <% content_for :sidebar do -%>
+        <div class="panel panel-default">
+          <div class="panel-heading">Groups</div>
+          <div class="panel-body">
+            <div class="col-sm-12">
+              <%= f.association :groups, as: :check_boxes %>
+            </div>
+          </div>
+        </div>
+      <%- end -%>
     <% end %>
     <%= bottom_buttons(f, 'save_buttons') %>
 <% end %>
