@@ -28,7 +28,27 @@ $(function () {
 
             $('#upload-attachment').modal('hide');
         },
-        enableDeleteButtons:function(){
+        enableActionButtons:function(){
+          // Handle copy url buttons
+          $("a[data-purpose='copy-url']").on('click', function(){
+            var url = $(this).data('url');
+
+            var tag = prompt("Here is your image tag. You can copy and paste it or just press 'OK' to insert the tag into your content.", "<img src=\""+url+"\"/>");
+            if (tag != null) {
+              $('textarea.editor:first').each(function (e) {
+                if (editorEnabled()) {
+                  var id = $(this).attr("id");
+                  CKEDITOR.instances[id].setData(CKEDITOR.instances[id].getData() + "<p>" + tag + "</p>");
+                }
+                else
+                {
+                  $(this).html($(this).html() + "\n" + tag);
+                  $(this).scrollTop($(this)[0].scrollHeight);
+                }
+              });              
+            }
+            return false;
+          });
           // Handle delete attachment button
           var delete_attachments_btns = $("a[data-purpose='delete-attachment']");
           if(delete_attachments_btns.exists()){
@@ -81,8 +101,8 @@ $(function () {
             $('div.buttons').show();
         }
         $('.empty-row').hide();
-        $.cms.AttachmentManager.enableDeleteButtons();
+        $.cms.AttachmentManager.enableActionButtons();
     });
 
-  $.cms.AttachmentManager.enableDeleteButtons();
+  $.cms.AttachmentManager.enableActionButtons();
 });
