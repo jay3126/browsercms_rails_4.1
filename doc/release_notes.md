@@ -1,3 +1,10 @@
+# v4.0.1.beta
+
+* Optimized UI
+* Add Toolbar to connectables in edit mode
+* Add attachment manager to html block by default
+
+
 # v4.0.0.beta
 
 * List Portlet [#678] - A convenient way to find content without custom coding.
