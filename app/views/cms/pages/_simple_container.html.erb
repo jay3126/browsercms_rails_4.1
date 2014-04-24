@@ -6,5 +6,7 @@
                 %>
     <%= link_to "Add existing", cms.new_connector_path(:page_id => @page, :container => name) , class: "cms-btn" %>
   </div>
-  <%= content %>
+  <div class="cms-container-contents">
+    <%= content %>
+  </div>
 </div>

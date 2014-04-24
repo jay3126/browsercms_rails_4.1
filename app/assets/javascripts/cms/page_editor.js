@@ -13,7 +13,7 @@ jQuery(function($){
 });
 
 jQuery(function($){
-  $(".cms-connector").sortable({
+  $(".cms-container-contents").sortable({
     connectWith: '.cms-connector',
     opacity: 0.8,
     axis: 'y',
