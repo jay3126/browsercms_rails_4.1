@@ -2,6 +2,9 @@
   background-color: #efefef;
   font-family: Helvetica, Arial, Verdana, sans-serif;
   position: relative;
+  .cms-container-contents {
+    min-height: 20px;
+  }
   .cms-toolbar {
     background-color: #505050;
     padding: 2px;
