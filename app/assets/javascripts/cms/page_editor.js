@@ -14,7 +14,7 @@ jQuery(function($){
 
 jQuery(function($){
   $(".cms-container-contents").sortable({
-    connectWith: '.cms-connector',
+    connectWith: '.cms-container-contents',
     handle: ".cms-toolbar-connector",
     opacity: 0.8,
     axis: 'y',
