@@ -1,5 +1,6 @@
 //= require 'jquery'
 //= require 'jquery_ujs'
+//= require jquery.ui.all
 //= require 'cms/core_library'
 //= require 'bootstrap/modal'
 //= require 'bcms/ckeditor'
@@ -12,6 +13,18 @@ jQuery(function($){
 });
 
 jQuery(function($){
+  $(".cms-connector").sortable({
+    connectWith: '.cms-connector',
+    opacity: 0.8,
+    axis: 'y',
+    forcePlaceholderSize: true,
+    update: function(event, ui) {
+      alert("UPDATE");
+    }
+  });
+
+  $(".cms-connector").disableSelection();
+
   $.cms_editor = {
     // Returns the widget that a user has currently selected.
     // @return [JQuery.Element]
@@ -21,7 +34,7 @@ jQuery(function($){
     },
     selectedConnector: function() {
       var parents = $.cms_editor.selectedElement().parents();
-      return $.cms_editor.selectedElement().parents(".connector");
+      return $.cms_editor.selectedElement().parents(".cms-connector");
     },
     // Reload the parent window
     reload: function() {
@@ -55,7 +68,7 @@ jQuery(function($){
             reload.apply();
           }
         }
-		//,beforeSend: $.cms_ajax.asJSON()
+    //,beforeSend: $.cms_ajax.asJSON()
       });
 
     },
@@ -73,7 +86,7 @@ jQuery(function($){
       }
 
       // Update the paths for connectors, so that they can be moved after ending.
-      var connectors = $("[data-container='" + data.container + "'] .connector");
+      var connectors = $("[data-container='" + data.container + "'] .cms-connector");
       for(var i = 0; i < connectors.length; i++){
         $(connectors[i]).attr('data-move-up', data.routes[i].move_up);
         $(connectors[i]).attr('data-move-down', data.routes[i].move_down);
@@ -116,7 +129,7 @@ jQuery(function($){
           }
         },
         data: message
-		//,beforeSend: $.cms_ajax.asJS()
+    //,beforeSend: $.cms_ajax.asJS()
       });
     }
   };

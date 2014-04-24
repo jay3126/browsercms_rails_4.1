@@ -1,4 +1,4 @@
-<%= content_tag 'div', class: 'connector',
+<%= content_tag 'div', class: 'cms-connector',
                 data: {move_up: cms.move_up_connector_path(connector, format: :json),
                        move_down: cms.move_down_connector_path(connector, format: :json),
                        remove: cms.connector_path(connector, format: :json),
@@ -25,5 +25,6 @@
       <%= link_to("Edit", edit_engine_aware_path(connectable, :_redirect_to => @page.path), class: 'cms-edit-content-link cms-btn',
                   title: "Edit this content.") %>
     </div>
+    asdf
     <%= render_connectable connectable %>
 <% end %>

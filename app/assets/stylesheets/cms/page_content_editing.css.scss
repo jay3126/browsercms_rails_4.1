@@ -1,14 +1,39 @@
 .cms-container {
   background-color: #efefef;
   font-family: Helvetica, Arial, Verdana, sans-serif;
+  position: relative;
   .cms-toolbar {
     background-color: #505050;
     padding: 2px;
   }
-  .cms-toolbar-connector {
-    background-color: #858585;
-    padding: 2px;
+  .cms-connector {
+    outline: 1px solid transparent;
+    -webkit-transition: outline 0.2s linear;
+    
+    .cms-toolbar-connector {
+      background-color: #858585;
+      padding: 2px;
+      position: relative;
+    }
   }
+  .cms-connector:hover {
+    outline: 1px solid rgba(0,0,0,0.2);
+    background-color: white;
+    -webkit-animation-name: shadow_glow;
+    -webkit-animation-duration: 1.2s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in;
+  }
+
+  .ui-sortable-placeholder {
+    height: auto !important;
+    min-height: 60px;
+    visibility: visible !important;
+    border: 5px dashed silver !important;
+    -webkit-border-radius: 10px;
+    background-color: white;
+  }
+
   .cms-btn {
     background-color: white;
     color: #505050;
@@ -26,4 +51,16 @@
     border-radius: 4px;
     font-weight: bold;
   }
+}
+
+@-webkit-keyframes shadow_glow {
+ from {
+   -webkit-box-shadow:0px 0px 8px #FFFFFF;
+ }
+ 30% {
+   -webkit-box-shadow:0px 0px 8px #666;
+ }
+ to {
+   -webkit-box-shadow:0px 0px 8px #FFFFFF;
+ }
 }
