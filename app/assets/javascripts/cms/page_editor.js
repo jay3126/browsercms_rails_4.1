@@ -180,7 +180,7 @@ jQuery(function($){
   });
 
   // Create editors for each content-block on the page.
-  $(".content-block").each(function() {
+  /*$(".content-block").each(function() {
     var id = $(this).attr('id');
     editor = CKEDITOR.inline(id, {
       toolbar: 'inline',
@@ -191,7 +191,7 @@ jQuery(function($){
       }
     });
 
-  });
+  });*/
 
 
   /* warn user on leaving if he changed text */

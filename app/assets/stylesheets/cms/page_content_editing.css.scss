@@ -12,7 +12,8 @@
   .cms-connector {
     outline: 1px solid transparent;
     -webkit-transition: outline 0.2s linear;
-    
+    overflow: hidden; 
+    float: none;
     .cms-toolbar-connector {
       background-color: #858585;
       padding: 2px;
