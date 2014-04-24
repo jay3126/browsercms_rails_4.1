@@ -4,8 +4,9 @@ require 'active_record/errors'
 module Cms
 
   class << self
+    include ActionView::Helpers::AssetUrlHelper
 
-    attr_accessor :attachment_file_permission
+    attr_accessor :attachment_file_permission, :logo
 
     # Determines which WYSIWYG editor is the 'default' for a BrowserCMS project
     #
@@ -26,6 +27,10 @@ module Cms
 
     def reserved_paths
       @reserved_paths ||= ["/cms", "/cache"]
+    end
+
+    def logo
+      @logo ||= "cms/logo.png"
     end
   end
 
