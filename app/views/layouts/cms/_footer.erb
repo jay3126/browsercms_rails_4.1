@@ -1,5 +1,11 @@
-<footer>
-  <hr>
-  <p>&copy; 1998-<%= Time.now.year %> <%= link_to "BrowserMedia", "http://www.browsermedia.com" %>. All Rights Reserved</p>
-  <p><%= link_to "BrowserCMS", "http://www.browsercms.org" %> v<%= Cms.version %> | Rails <%= Rails.version %> | Env <%= Rails.env %></p>
-</footer>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <footer>
+        <hr>
+        <p>&copy; 1998-<%= Time.now.year %> <%= link_to "BrowserMedia", "http://www.browsermedia.com" %>. All Rights Reserved</p>
+        <p><%= link_to "BrowserCMS", "http://www.browsercms.org" %> v<%= Cms.version %> | Rails <%= Rails.version %> | Env <%= Rails.env %></p>
+      </footer>
+    </div>
+  </div>
+</div>
