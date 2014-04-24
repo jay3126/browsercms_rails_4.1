@@ -87,6 +87,22 @@ module Cms
       end
     end
 
+    def update_container_positions
+      elements = params[:elements]
+      render :text => 0 if elements.nil?
+      stat = 1
+      elements[:elements].each do |e|
+        element = e[1]
+        connector = Connector.find(element[:id])
+        unless connector.nil?
+          connector.container = element[:container]
+          connector.position = element[:position]
+          stat = 0 if !connector.save
+        end
+      end
+      render :text => stat
+    end
+
     def version
       @page = @page.as_of_version(params[:version])
       @show_toolbar = true

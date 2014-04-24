@@ -50,6 +50,7 @@ Cms::Engine.routes.draw do
       put :hide
       put :publish
       get :versions
+      post :update_container_positions
     end
     collection do
       put :publish

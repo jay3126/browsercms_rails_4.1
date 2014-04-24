@@ -20,11 +20,28 @@ jQuery(function($){
     axis: 'y',
     forcePlaceholderSize: true,
     update: function(event, ui) {
-      alert("UPDATE");
+      updatePositions();
     }
   });
 
-  $(".cms-connector").disableSelection();
+  function updatePositions() {
+    var containers = new Array();
+    $(".cms-container").each(function(index){
+      var container = $(this).data("container");
+      $(this).find(".cms-connector").each(function(idx){
+        var element_id = $(this).data("id");
+        containers.push({"id": element_id, "position": idx + 1, "container": container});
+      });
+    });
+
+    var elements_json = {"elements": containers};
+
+    var url = '/cms/pages/' + page_id + '/update_container_positions'; 
+    $.post(url, {elements: elements_json}, function(data){
+      if (data == "0")
+        alert("Die Sortierung konnte nicht gespeichert werden!");
+     });
+  }
 
   $.cms_editor = {
     // Returns the widget that a user has currently selected.

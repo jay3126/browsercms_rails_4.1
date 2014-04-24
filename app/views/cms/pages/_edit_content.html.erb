@@ -2,7 +2,8 @@
                 data: {move_up: cms.move_up_connector_path(connector, format: :json),
                        move_down: cms.move_down_connector_path(connector, format: :json),
                        remove: cms.connector_path(connector, format: :json),
-                       edit_path: edit_engine_aware_path(connectable, :_redirect_to => @page.path)
+                       edit_path: edit_engine_aware_path(connectable, :_redirect_to => @page.path),
+                       id: connector.id
                 } do %>
     <div class="cms-toolbar-connector">
       <% if (!content_supports_inline_editing?(connector)) %>
