@@ -6,23 +6,13 @@
                        id: connector.id
                 } do %>
     <div class="cms-toolbar-connector">
-      <% if (!content_supports_inline_editing?(connector)) %>
-          <%= link_to(image_tag('cms/arrow-up.png', class: 'cms-move-up-content-link'),
-                      move_up_connector_path(connector),
-                      method: :put,
-                      title: "Move this content up.") %>
-          <%= link_to(image_tag('cms/arrow-down.png', class: 'cms-move-down-content-link'),
-                      move_down_connector_path(connector),
-                      method: :put,
-                      title: "Move this content down.") %>
-          <%= link_to image_tag("ckeditor/plugins/delete_content/icons/deletecontent.png",
-                          class: 'cms-remove-content-link', alt: "Remove content"),
-                          cms.connector_path(connector, _redirect_to: @page.path),
-                          method: :delete,
-                          title: "Remove this content from page (#{connectable.name}).",
-                          data: { confirm:"Are you sure you want to remove this content from the page? (It will remain available in the Content Library.)"}
-          %>
-      <% end %>
+      <%= link_to "Remove",
+                  cms.connector_path(connector, _redirect_to: @page.path),
+                  class: "cms-btn cms-remove-content-link",
+                  method: :delete,
+                  title: "Remove this content from page (#{connectable.name}).",
+                  data: { confirm:"Are you sure you want to remove this content from the page? (It will remain available in the Content Library.)"}
+      %>
       <%= link_to("Edit", edit_engine_aware_path(connectable, :_redirect_to => @page.path), class: 'cms-edit-content-link cms-btn',
                   title: "Edit this content.") %>
     </div>
