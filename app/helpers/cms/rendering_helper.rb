@@ -31,7 +31,7 @@ module Cms
         content_tag 'div',
                     id: random_unique_identifier(),
                     class: 'content-block',
-                    contenteditable: true,
+                    contenteditable: false,
                     data: {
                       content_name: @content_block.content_name,
                       id: @content_block.id,

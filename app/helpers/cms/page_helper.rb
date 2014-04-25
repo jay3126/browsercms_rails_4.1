@@ -55,7 +55,7 @@ module Cms
     # Use for h1/h2 elements. Use page_title for title elements.
     def page_header()
       if (is_current_user_able_to_edit_this_content?(current_page))
-        options = {id: 'page_title', contenteditable: true, data: {attribute: "title", content_name: "page", id: current_page.id, page_id: current_page.id}}
+        options = {id: 'page_title', contenteditable: false, data: {attribute: "title", content_name: "page", id: current_page.id, page_id: current_page.id}}
         content_tag "div", page_title, options
       else
         page_title

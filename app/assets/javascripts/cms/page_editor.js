@@ -167,7 +167,7 @@ jQuery(function($){
   CKEDITOR.disableAutoInline = true;
 
   // Titles
-  $("#page_title").each(function() {
+  /*$("#page_title").each(function() {
     var id = $(this).attr('id');
     CKEDITOR.inline(id, {
       toolbar: 'page_title',
@@ -177,7 +177,7 @@ jQuery(function($){
         }
       }
     });
-  });
+  });*/
 
   // Create editors for each content-block on the page.
   /*$(".content-block").each(function() {
