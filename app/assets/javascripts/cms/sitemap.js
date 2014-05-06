@@ -20,19 +20,6 @@ Sitemap.prototype.select = function(selectedRow) {
   newContentButton.updateButtons(selectedRow);
 };
 
-// Different Content types have different behaviors when double clicked.
-Sitemap.prototype._doubleClick = function(event) {
-  var type = $(event.target).data('type');
-  switch(type) {
-    case 'section':
-    case 'link':
-      $('#properties-button')[0].click();
-      break;
-    default:
-      $('#edit-button')[0].click();
-  }
-};
-
 // @param [Number] node_id
 // @param [Number] target_node_id
 // @param [Number] position A 1 based position for order
@@ -52,13 +39,13 @@ Sitemap.prototype.moveTo = function(node_id, target_node_id, position) {
 
 // @param [Selector] Determines if a section is open.
 Sitemap.prototype.isOpen = function(row) {
-  return row.find('.type-icon').hasClass('icon-folder-open');
+  return row.find('.type-icon').hasClass('glyphicon-folder-open');
 };
 
 // @param [Selector] link A selected link (<a>)
 // @param [String] icon The full name of the icon (icon-folder-open)
 Sitemap.prototype.changeIcon = function(row, icon) {
-  row.find('.type-icon').attr('class', 'type-icon').addClass(icon);
+  row.find('.type-icon').attr('class', 'type-icon glyphicon').addClass(icon);
 };
 
 // @param [Number] id
@@ -75,7 +62,7 @@ Sitemap.prototype.saveAsClosed = function(id) {
 Sitemap.prototype.restoreOpenState = function() {
   var section_node_ids = $.cookieSet.get(Sitemap.STATE);
   _.each(section_node_ids, function(id) {
-    var row = $('.nav-list-span[data-id=' + id + ']');
+    var row = $('.list-group-item-span[data-id=' + id + ']');
     sitemap.open(row, {animate: false});
   });
 };
@@ -94,7 +81,7 @@ Sitemap.prototype.isClosable = function(row) {
 Sitemap.prototype.open = function(row, options) {
   options = options || {}
   _.defaults(options, {animate: true});
-  this.changeIcon(row, 'icon-folder-open');
+  this.changeIcon(row, 'glyphicon-folder-open');
   var siblings = row.siblings('.children');
   if (options.animate) {
     siblings.slideToggle();
@@ -113,7 +100,7 @@ Sitemap.prototype.attemptOpen = function(row, options) {
 };
 
 Sitemap.prototype.close = function(row) {
-  this.changeIcon(row, 'icon-folder');
+  this.changeIcon(row, 'glyphicon-folder-close');
   row.siblings('.children').slideToggle();
   this.saveAsClosed(row.data('id'));
 };
@@ -131,7 +118,7 @@ Sitemap.prototype.toggleOpen = function(row) {
 
 Sitemap.prototype.updateDepth = function(element, newDepth) {
   var depthClass = "level-" + newDepth;
-  element.attr('class', 'ui-draggable ui-droppable nav-list-span').addClass(depthClass);
+  element.attr('class', 'ui-draggable ui-droppable list-group-item-span').addClass(depthClass);
   element.attr('data-depth', newDepth);
 };
 
@@ -154,10 +141,10 @@ jQuery(function($){
     $('#sitemap .list-group-item-span').droppable({
       hoverClass: "droppable",
       drop: function(event, ui) {
-        var elementToMove = ui.draggable.parents('.nav-list').first();
-        var elementDroppedOn = $(this).parents('.nav-list').first();
+        var elementToMove = ui.draggable.parents('.list-group').first();
+        var elementDroppedOn = $(this).parents('.list-group').first();
         var targetDepth = $(this).data('depth');
-
+        console.log(elementDroppedOn);
 
         if (sitemap.isFolder($(this))) {
           // Drop INTO sections

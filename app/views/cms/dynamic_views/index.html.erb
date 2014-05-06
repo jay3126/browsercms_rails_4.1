@@ -1,7 +1,10 @@
 <% use_page_title "#{dynamic_view_type.name.demodulize.titleize.pluralize}" %>
 <%= render layout: 'page_title' do %>
-    <%= link_to "Add", new_engine_aware_path(dynamic_view_type), class: 'btn btn-primary btn-small right' %>
+  <p class="pull-right">
+    <%= link_to "Add", new_engine_aware_path(dynamic_view_type), class: 'btn btn-default' %>
+  </p>
 <% end %>
+<div class="col-sm-12">
 <%= render layout: 'main_content' do %>
   <table class="data cms-content-table table table-striped table-bordered table-hover">
 	<thead>
@@ -30,4 +33,4 @@
 <% elsif @views.total_pages > 1 %>
   <%= render_pagination @views, dynamic_view_type %>
 <% end %>
-
+</div>

@@ -19,20 +19,33 @@
 <% end %>
 
 <%= simple_form_for @group do |f| %>
-    <%=  page_title_with_buttons(f, 'save_buttons') %>
+    <h1 class="page-header"><%=  page_title %></h1>
     <%= render layout: 'main_with_sidebar' do %>
-    <%= f.input :name, label: "Group Name" %>
-    <% unless @group.guest? %>
-        <%= f.association :group_type,
-                    collection: Cms::GroupType.non_guest,
-                    label: 'Type of User',
-                    hint: 'What kind of user does this group represent?',
-                    include_blank: false
-        %>
-    <% end %>
-
-    <%= render :partial => 'permissions', locals: {f: f} %>
-    <%= render :partial => 'sections', locals: {f: f} %>
+      <div class="panel panel-default">
+        <div class="panel-heading">General</div>
+        <div class="panel-body">
+          <%= f.input :name, label: "Group Name" %>
+          <% unless @group.guest? %>
+          <%= f.association :group_type,
+                      collection: Cms::GroupType.non_guest,
+                      label: 'Type of User',
+                      hint: 'What kind of user does this group represent?',
+                      include_blank: false
+          %>
+          <% end %>
+        </div>
+      </div>
+      <% content_for :sidebar do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">Permissions</div>
+          <div class="panel-body">
+            <div class="col-sm-12">
+              <%= render :partial => 'permissions', locals: {f: f} %>
+              <%= render :partial => 'sections', locals: {f: f} %>
+            </div>
+          </div>
+        </div>
+      <%- end -%>
     <% end %>
     <%= bottom_buttons f,  'save_buttons' %>
 <% end %>

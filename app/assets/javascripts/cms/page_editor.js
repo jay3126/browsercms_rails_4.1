@@ -1,5 +1,6 @@
 //= require 'jquery'
 //= require 'jquery_ujs'
+//= require jquery.ui.all
 //= require 'cms/core_library'
 //= require 'bootstrap/modal'
 //= require 'bcms/ckeditor'
@@ -12,6 +13,36 @@ jQuery(function($){
 });
 
 jQuery(function($){
+  $(".cms-container-contents").sortable({
+    connectWith: '.cms-container-contents',
+    handle: ".cms-toolbar-connector",
+    opacity: 0.8,
+    axis: 'y',
+    forcePlaceholderSize: true,
+    update: function(event, ui) {
+      updatePositions();
+    }
+  });
+
+  function updatePositions() {
+    var containers = new Array();
+    $(".cms-container").each(function(index){
+      var container = $(this).data("container");
+      $(this).find(".cms-connector").each(function(idx){
+        var element_id = $(this).data("id");
+        containers.push({"id": element_id, "position": idx + 1, "container": container});
+      });
+    });
+
+    var elements_json = {"elements": containers};
+
+    var url = '/cms/pages/' + page_id + '/update_container_positions'; 
+    $.post(url, {elements: elements_json}, function(data){
+      if (data == "0")
+        alert("Die Sortierung konnte nicht gespeichert werden!");
+     });
+  }
+
   $.cms_editor = {
     // Returns the widget that a user has currently selected.
     // @return [JQuery.Element]
@@ -21,7 +52,7 @@ jQuery(function($){
     },
     selectedConnector: function() {
       var parents = $.cms_editor.selectedElement().parents();
-      return $.cms_editor.selectedElement().parents(".connector");
+      return $.cms_editor.selectedElement().parents(".cms-connector");
     },
     // Reload the parent window
     reload: function() {
@@ -55,7 +86,7 @@ jQuery(function($){
             reload.apply();
           }
         }
-		//,beforeSend: $.cms_ajax.asJSON()
+    //,beforeSend: $.cms_ajax.asJSON()
       });
 
     },
@@ -73,7 +104,7 @@ jQuery(function($){
       }
 
       // Update the paths for connectors, so that they can be moved after ending.
-      var connectors = $("[data-container='" + data.container + "'] .connector");
+      var connectors = $("[data-container='" + data.container + "'] .cms-connector");
       for(var i = 0; i < connectors.length; i++){
         $(connectors[i]).attr('data-move-up', data.routes[i].move_up);
         $(connectors[i]).attr('data-move-down', data.routes[i].move_down);
@@ -116,7 +147,7 @@ jQuery(function($){
           }
         },
         data: message
-		//,beforeSend: $.cms_ajax.asJS()
+    //,beforeSend: $.cms_ajax.asJS()
       });
     }
   };
@@ -136,7 +167,7 @@ jQuery(function($){
   CKEDITOR.disableAutoInline = true;
 
   // Titles
-  $("#page_title").each(function() {
+  /*$("#page_title").each(function() {
     var id = $(this).attr('id');
     CKEDITOR.inline(id, {
       toolbar: 'page_title',
@@ -146,10 +177,10 @@ jQuery(function($){
         }
       }
     });
-  });
+  });*/
 
   // Create editors for each content-block on the page.
-  $(".content-block").each(function() {
+  /*$(".content-block").each(function() {
     var id = $(this).attr('id');
     editor = CKEDITOR.inline(id, {
       toolbar: 'inline',
@@ -160,7 +191,7 @@ jQuery(function($){
       }
     });
 
-  });
+  });*/
 
 
   /* warn user on leaving if he changed text */

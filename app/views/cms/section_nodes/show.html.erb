@@ -3,12 +3,9 @@
 <h1 class="page-header"><%= page_title %></h1>
 
 <div class="row">
-  <div class="col-sm-12">
-    <ul id="sitemap" class="list-group">
-      <%= render partial: 'section_node', locals: {section_node: @root_section_node,
-                                                   parent: nil,
-                                                   children: @sitemap[@root_section_node]} %>
-    </ul>
+  <div class="col-sm-12" id="sitemap">
+    <%= render partial: 'section_node', locals: {section_node: @root_section_node,
+                                                 parent: nil,
+                                                 children: @sitemap[@root_section_node]} %>
   </div>
 </div>
-

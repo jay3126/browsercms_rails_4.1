@@ -4,13 +4,16 @@
 %>
 <tr id="<%= dom_id(attachment) %>">
   <% if attachment.is_image? %>
-      <td><%= link_to(image_tag(attachment_path_for(attachment), :size => '60x60', :data => {:purpose => 'attachment'}), attachment_path_for(attachment), target: "_blank") %></td>
+    <td><%= link_to image_tag(attachment_path_for(attachment), width: "200", :data=>{:purpose=>'attachment'}), attachment.url %></td>
   <% else %>
-      <td><%= image_tag "cms/icons/file_types/#{attachment.icon}.png" %>
+    <td><%= image_tag "cms/icons/file_types/#{attachment.icon}.png" %>
   <% end %>
   <td><%= attachment.attachment_name.singularize.capitalize %></td>
   <td><%= number_to_human_size(attachment.size) %></td>
-  <td><%= link_to("Delete", '#',
+  <td>
+    <%= link_to("Delete", '#',
                   data: {purpose: 'delete-attachment', id: attachment.id},
-                  class: 'btn btn-mini btn-danger') if show_delete %></td>
+                  class: 'btn btn-sm btn-danger') if show_delete %>
+    <%= link_to "Add to Content", "#", class: 'btn btn-sm btn-default', data: { purpose: 'copy-url', url: attachment.url } %>
+  </td>
 </tr>
