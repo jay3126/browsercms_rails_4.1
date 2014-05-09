@@ -1,6 +1,6 @@
 module Cms
   module Sites
-    class PasswordsController < Devise::PasswordsController
+    class PasswordsController1 < Devise::PasswordsController
       include Cms::ContentPage
       helper AuthenticationHelper
 

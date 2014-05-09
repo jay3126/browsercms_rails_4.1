@@ -2,7 +2,7 @@ module Cms
   module Sites
 
     # Handles Sign In/Out for public site.
-    class SessionsController < Devise::SessionsController
+    class SessionsController1 < Devise::SessionsController
       include Cms::ContentPage
       helper AuthenticationHelper
       helper UiElementsHelper

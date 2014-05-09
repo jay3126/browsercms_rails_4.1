@@ -101,6 +101,8 @@ module Cms
                           :s3_host_name => rail_config(:s3_host_name),
                           :s3_host_alias => rail_config(:s3_host_alias)
 
+        validates_attachment :data, :content_type => { :not => 'audio/mpeg3' }                          
+
       end
 
       # Looks up a value from Rails config

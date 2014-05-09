@@ -4,7 +4,7 @@ module Cms
     include Cms::AdminController
     before_filter :redirect_to_cms_site, :only => [:new]
 
-    layout 'cms/application'
+    layout 'application'
 
     def new
       use_page_title 'Login'

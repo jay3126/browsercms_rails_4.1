@@ -1,7 +1,7 @@
 module Cms
-  class PasswordsController < Devise::PasswordsController
+  class PasswordsController1 < Devise::PasswordsController
     include Cms::AdminController
-    layout 'cms/application'
+    layout 'application'
 
     def new
       use_page_title('Forgot Password')
