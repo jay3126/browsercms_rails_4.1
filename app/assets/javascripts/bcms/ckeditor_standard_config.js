@@ -8,3 +8,6 @@ CKEDITOR.config.toolbar_Standard = [
   '/',
   ['Link','Unlink','Anchor','Image','Table','SpecialChar','-','Bold','Italic','Underline','JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','-','TextColor','Styles']
 ];
+
+CKEDITOR.config.filebrowserBrowseUrl = '/bcms_kcfinder/browse';
+CKEDITOR.config.filebrowserImageBrowseUrl = '/bcms_kcfinder/browse?type=images';
