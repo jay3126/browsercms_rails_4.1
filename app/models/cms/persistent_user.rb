@@ -60,6 +60,10 @@ module Cms
       !!@guest
     end
 
+    def source
+      "Users"
+    end
+
     # Determines if this user should have access to the CMS administration tools. Can be overridden by specific users (like GuestUser)
     # which may not need to check the database for that information.
     def cms_access?

@@ -27,7 +27,7 @@
     </div>
   <% end %>
   <div class="col-sm-2">
-    <%= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-default pull-right" %>
+    <%#= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-default pull-right" %>
   </div>
 </div>
 
@@ -39,11 +39,11 @@
         <th>Name</th>
         <th>Email</th>
         <th>Groups</th>
-        <th>Expiration</th>
+        <!-- <th>Expiration</th> -->
         <th>Actions</th>
-        <% if @have_external_users %>
-            <th>Source</th>
-        <% end %>
+        <%# if @have_external_users %>
+            <!-- <th>Source</th> -->
+        <%# end %>
       </tr>
       </thead>
       <% @users.each do |user| %>
@@ -55,24 +55,26 @@
               <%= link_to user.email, "mailto:#{user.email}" %>
             </td>
             <td>
-              <% user.groups.order("#{Cms::Group.table_name}.name").each do |g| %>
-                  <%= g.name %>
-              <% end %>
+              <%# user.groups.order("#{Cms::Group.table_name}.name").each do |g| %>
+                  <%#= g.name %>
+              <%# end %>
+              <%= user.groups.order("#{Cms::Group.table_name}.name").map { |g| g.name }.uniq.join(", ") %>
             </td>
+            <!-- <td> -->
+              <%#= user.expires_at ? format_date(user.expires_at) : "Never" %>
+            <!-- </td> -->
             <td>
-              <%= user.expires_at ? format_date(user.expires_at) : "Never" %>
+              <%= link_to "Change CMS Role Groups", edit_user_path(user), class: 'btn btn-mini btn-primary' %>
+              <%#= link_to("Change Password", [:change_password, user.becomes(Cms::User)], :id => "change_password_button", :class => "btn btn-primary btn-mini") if user.password_changeable? %>
+              <%# if user.expired? %>
+                  <%#= link_to("Enable", [:enable, user.becomes(Cms::User)], :class => "http_put btn btn-mini btn-success") %>
+              <%# else %>
+                  <%#= link_to("Disable", [:disable, user.becomes(Cms::User)], :class => "http_put btn btn-mini btn-danger") if @users.size > 1 %>
+              <%# end %>
             </td>
-            <td>
-              <%= link_to("Change Password", [:change_password, user.becomes(Cms::User)], :id => "change_password_button", :class => "btn btn-primary btn-mini") if user.password_changeable? %>
-              <% if user.expired? %>
-                  <%= link_to("Enable", [:enable, user.becomes(Cms::User)], :class => "http_put btn btn-mini btn-success") %>
-              <% else %>
-                  <%= link_to("Disable", [:disable, user.becomes(Cms::User)], :class => "http_put btn btn-mini btn-danger") if @users.size > 1 %>
-              <% end %>
-            </td>
-            <% if @have_external_users %>
-                <td><%= user.source %></td>
-            <% end %>
+            <%# if @have_external_users %>
+                <!-- <td><%#= user.source %></td> -->
+            <%# end %>
           </tr>
       <% end %>
     </table>
