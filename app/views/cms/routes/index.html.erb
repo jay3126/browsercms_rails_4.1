@@ -4,8 +4,7 @@
     <%= link_to "Page Routes", page_routes_path, class: 'btn btn-default' %>
   </div>
 <% end %>
-
-<div class="row">
+<div class="container">
   <%= form_tag routes_path, :method => :get do %>
     <label>
       Path to Test: <%= text_field_tag :path, @path, :size => 50 %>
@@ -16,26 +15,26 @@
       </div>
     <% end %>
   <% end %>
-</div>
-<div class="col-sm-12">
-<%= render layout: 'main_content' do %>
-<table class="data cms-content-table table table-striped table-bordered table-hover">
-  <thead>  
-	  <tr>
-	    <th>Name</th>
-	    <th>Verb</th>
-	    <th>Pattern</th>
-        <th>Result</th>
-	  </tr>
-  </thead>
-  <% for route in @routes %>
-    <tr>
-      <td><%=h route[:name] %></td>
-      <td><%=h route[:verb] %></td>
-      <td><%=h route[:segs] %></td>
-      <td><%=h route[:reqs] %></td>
-    </tr>
-  <% end %>
-</table>
-<% end %>
+  <div class="col-sm-12">
+    <%= render layout: 'main_content' do %>
+    <table class="data cms-content-table table table-striped table-bordered table-hover">
+      <thead>  
+    	  <tr>
+    	    <th>Name</th>
+    	    <th>Verb</th>
+    	    <th>Pattern</th>
+            <th>Result</th>
+    	  </tr>
+      </thead>
+      <% for route in @routes %>
+        <tr>
+          <td><%=h route[:name] %></td>
+          <td><%=h route[:verb] %></td>
+          <td><%=h route[:segs] %></td>
+          <td><%=h route[:reqs] %></td>
+        </tr>
+      <% end %>
+    </table>
+    <% end %>
+  </div>
 </div>
