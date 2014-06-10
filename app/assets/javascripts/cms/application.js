@@ -15,23 +15,6 @@
 //= require cms/sitemap
 //= require bootstrap
 //= require ace/ace
-//= require ace/theme-twilight
+//= require ace/theme-textmate
 //= require ace/mode-html_ruby
 //
-
-$(document).ready(function(){
-	var text_area = $('#page_template_body');
-	if(text_area.length == 0){
-		var text_area = $('#page_partial_body');
-	}
-	$(text_area).after('<div id="editor" style="height:500px;width:1000px;"></div>');
-	$('#editor').text( $(text_area).val() );
-	$(text_area).hide();
-	var editor = ace.edit("editor");
-  editor.setTheme("ace/theme/twilight");
-  editor.getSession().setMode("ace/mode/html_ruby");
-  editor.getSession().on('change', function(){
-	  text_area.val(editor.getSession().getValue());
-	});
-})
-

@@ -4,6 +4,21 @@
         <%= f.input :name, hint: @view.hint, placeholder: @view.placeholder %>
         <%= f.input :format %>
         <%= f.input :handler, collection: ActionView::Template.template_handler_extensions, default: "erb" %>
-        <%= f.input :body, as: :text, input_html: {:style => "height: 500px", :cols => 80} %>
+        <%= f.input :body, as: :text, input_html: {class: 'hide'} %>
+        <%= content_tag :div, f.object.body, id: 'editor', style: "height:500px;width:1000px;font-size:14px;min-height:200px;" %>
     <% end %>
 <% end %>
+<script type="text/javascript">
+		var text_area = $('#page_template_body');
+		if(text_area.length == 0){
+			var text_area = $('#page_partial_body');
+		}
+		var editor = ace.edit("editor");
+	  editor.setTheme("ace/theme/textmate");
+	  editor.getSession().setMode("ace/mode/html_ruby");
+	  editor.getSession().setUseWrapMode(true);
+	  editor.getSession().on('change', function(){
+		  text_area.val(editor.getSession().getValue());
+		});
+</script>
+
