@@ -11,10 +11,10 @@ Cms::Engine.routes.draw do
   get '/administration', :to => "users#index", :as => 'administration'
 
   devise_for :cms_users,
-             skip: [:sessions, :passwords],
+             skip: [:sessions],# :passwords],
              path: :users,
              class_name: 'Cms::User',
-             # controllers: {passwords: 'cms/passwords'},
+             controllers: {registrations: "registrations", passwords: "passwords", unlocks: "unlocks"},
              module: :devise
 
   devise_scope :cms_user do

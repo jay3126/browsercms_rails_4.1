@@ -8,6 +8,8 @@ module Cms
 
     def new
       use_page_title 'Login'
+      @rane_bg = true
+      @no_padding_bg = true
       super
     end
 

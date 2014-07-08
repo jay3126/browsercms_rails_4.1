@@ -89,11 +89,11 @@ module Cms
     #
     # @override Devise::Models::Authenticatable#active_for_authentication?
     # @return [Boolean] true if this user has not expired.
-    def active_for_authentication?
-      is_active = !expired?
-      logger.error "Expired User '#{login}' failed to login. Account expired on #{expires_at_formatted}." unless is_active
-      is_active
-    end
+    # def active_for_authentication?
+    #   is_active = !expired?
+    #   logger.error "Expired User '#{login}' failed to login. Account expired on #{expires_at_formatted}." unless is_active
+    #   is_active
+    # end
 
     # Determines if this User can have their password changed.
     def password_changeable?
@@ -102,18 +102,18 @@ module Cms
 
     # Determines if this user has expired or has been disabled.
     # @return [Boolean]
-    def expired?
-      expires_at && expires_at <= Time.now
-    end
+    # def expired?
+    #   expires_at && expires_at <= Time.now
+    # end
 
-    def enable
-      self.expires_at = nil
-    end
+    # def enable
+    #   self.expires_at = nil
+    # end
 
-    def enable!
-      enable
-      save!
-    end
+    # def enable!
+    #   enable
+    #   save!
+    # end
 
     def full_name
       [first_name, last_name].reject { |e| e.nil? }.join(" ")
@@ -133,9 +133,9 @@ module Cms
 
     # This is to show a formated date on the input form. I'm unsure that
     # this is the best way to solve this, but it works.
-    def expires_at_formatted
-      expires_at ? (expires_at.strftime '%m/%d/%Y') : nil
-    end
+    # def expires_at_formatted
+    #   expires_at ? (expires_at.strftime '%m/%d/%Y') : nil
+    # end
 
     def permissions
       @permissions ||= Cms::Permission.where(["#{self.class.table_name}.id = ?", id]).includes({:groups => :users}).references(:users)
