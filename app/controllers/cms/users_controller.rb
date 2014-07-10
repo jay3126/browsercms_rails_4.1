@@ -12,10 +12,10 @@ module Cms
 
       query, conditions = [], []
 
-      unless params[:show_expired]
-        query << "expires_at IS NULL OR expires_at >= ?"
-        conditions << Time.now.utc
-      end
+      # unless params[:show_expired]
+      #   query << "expires_at IS NULL OR expires_at >= ?"
+      #   conditions << Time.now.utc
+      # end
 
       unless params[:key_word].blank?
         query << %w(login email first_name last_name).collect { |f| "lower(#{f}) LIKE lower(?)" }.join(" OR ")
