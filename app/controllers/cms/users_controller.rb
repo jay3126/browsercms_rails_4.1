@@ -16,7 +16,10 @@ module Cms
       #   query << "expires_at IS NULL OR expires_at >= ?"
       #   conditions << Time.now.utc
       # end
-
+      
+      query << "role = ?"
+      conditions << 10
+      
       unless params[:key_word].blank?
         query << %w(login email first_name last_name).collect { |f| "lower(#{f}) LIKE lower(?)" }.join(" OR ")
         4.times { conditions << "%#{params[:key_word]}%" }
@@ -41,6 +44,8 @@ module Cms
 
     def create
       @user = Cms::User.new(cms_user_params)
+      @user.login = @user.email
+      @user.role = 10
       if @user.save
         flash[:notice] = "User '#{@user.login}' was created"
         redirect_to users_path
@@ -80,7 +85,7 @@ module Cms
     protected
 
     def cms_user_params
-      params.require("user").permit(Cms::User.permitted_params)
+      params.require("user").permit([:password, :password_confirmation]+Cms::User.permitted_params)
     end
 
     def after_create_url

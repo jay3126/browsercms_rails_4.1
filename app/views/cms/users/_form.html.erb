@@ -1,14 +1,20 @@
-<%= simple_form_for(@user.becomes(Cms::User), html: {autocomplete: 'off'}) do |f| %>
+<% hsh = { html: {autocomplete: 'off'} } %>
+<% hsh = hsh.merge( { url: create_cms_user_path } ) if @user.new_record? %>
+
+
+<%#= simple_form_for( @user.becomes(Cms::User), url: create_cms_user_path, html: {autocomplete: 'off'}) do |f| %>
+  <%= simple_form_for(@user.becomes(Cms::User), hsh) do |f| %>
+
     <h1 class="page-header"><%= page_title %></h1>
     <%= render layout: 'main_with_sidebar' do %>
-      <!-- <div class="panel panel-default"> -->
-        <!-- <div class="panel-heading">General</div> -->
-        <!-- <div class="panel-body"> -->
-          <%#= render :partial => 'user_fields', :locals => {:f => f} unless @change_password %>
-          <%#= render :partial => 'password', :locals => {:f => f} if @user.new_record? %>
-        <!-- </div> -->
-      <!-- </div> -->
-      <%# content_for :sidebar do -%>
+       <div class="panel panel-default">
+        <div class="panel-heading">General</div> 
+        <div class="panel-body">
+          <%= render :partial => 'user_fields', :locals => {:f => f} unless @change_password %>
+          <%= render :partial => 'password', :locals => {:f => f} if @user.new_record? %>
+        </div>
+      </div> 
+      <% content_for :sidebar do -%>
         <div class="panel panel-default">
           <div class="panel-heading">Groups</div>
           <div class="panel-body">
@@ -17,7 +23,7 @@
             </div>
           </div>
         </div>
-      <%#- end -%>
+      <%- end -%>
     <% end %>
     <div style="width:140px;">
       <%= bottom_buttons(f, 'save_buttons') %>

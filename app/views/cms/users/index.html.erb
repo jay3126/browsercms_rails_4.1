@@ -19,15 +19,15 @@
     </div>
     <div class="col-sm-2">
       <div class="form-group">
-        <label class="boolean optional control-label checkbox" for="show_expired">
-          <%= check_box_tag "show_expired", "yes", params[:show_expired] %>
-          Show inactive?
-        </label>
+        <!-- <label class="boolean optional control-label checkbox" for="show_expired"> -->
+          <%#= check_box_tag "show_expired", "yes", params[:show_expired] %>
+          <!-- Show inactive? -->
+        <!-- </label> -->
       </div>
     </div>
   <% end %>
   <div class="col-sm-2">
-    <%#= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-default pull-right" %>
+    <%= link_to "Add User", new_user_path, :id => "add_user_button", :class => "btn btn-default pull-right" %>
   </div>
 </div>
 

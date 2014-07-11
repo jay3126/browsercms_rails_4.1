@@ -22,6 +22,7 @@ Cms::Engine.routes.draw do
     get '/login' => "sessions#new", :as => :new_cms_user_session
     post '/login' => "sessions#create", :as => :cms_user_session
     get '/logout' => "sessions#destroy", :as => 'logout'
+    post '/users/cms_user_create' => "users#create", :as => :create_cms_user
 
   end
 

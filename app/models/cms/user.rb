@@ -15,7 +15,7 @@ module Cms
       end
 
       def permitted_params
-        super + [:password, :password_confirmation]
+        super + [:password, :password_confirmation, :role]
       end
     end
 
