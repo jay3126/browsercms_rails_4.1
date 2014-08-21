@@ -7,7 +7,7 @@ module Cms
 
     include Cms::MobileAware
     helper MobileHelper
-
+skip_before_filter :authenticate_cms_user!
     skip_before_filter :redirect_to_cms_site
     before_filter :redirect_non_cms_users_to_public_site, :only => [:show, :show_page_route]
     before_filter :construct_path, :only => [:show]
