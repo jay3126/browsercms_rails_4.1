@@ -1,8 +1,8 @@
 module Cms
   class DynamicView < ActiveRecord::Base
-    #store_templates
-    after_save :write_file_to_disk
-    after_destroy :remove_file_from_disk
+    store_templates
+    # after_save :write_file_to_disk
+    # after_destroy :remove_file_from_disk
 
     extend DefaultAccessible
 

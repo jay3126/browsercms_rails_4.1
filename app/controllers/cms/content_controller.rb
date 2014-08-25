@@ -75,7 +75,7 @@ skip_before_filter :authenticate_cms_user!
 
     def render_page
       prepare_connectables_for_render
-      #prepend_view_path DynamicView.resolver
+      prepend_view_path DynamicView.resolver
       respond_with @page, determine_page_layout
     end
 
