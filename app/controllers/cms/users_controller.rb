@@ -17,9 +17,9 @@ module Cms
       #   conditions << Time.now.utc
       # end
       
-      query << "role = ?"
-      conditions << 10
-      
+      query << "role IN (?)"
+      conditions << [11,12]      
+
       unless params[:key_word].blank?
         query << %w(login email first_name last_name).collect { |f| "lower(#{f}) LIKE lower(?)" }.join(" OR ")
         4.times { conditions << "%#{params[:key_word]}%" }
@@ -38,21 +38,21 @@ module Cms
       @users = PersistentUser.where(conditions).paginate(page: page_num, per_page: per_page).includes(:user_group_memberships).references(:user_group_memberships).order("first_name, last_name, email")
     end
 
-    def new
-      @user = Cms::User.new
-    end
+    # def new
+    #   @user = Cms::User.new
+    # end
 
-    def create
-      @user = Cms::User.new(cms_user_params)
-      @user.login = @user.email
-      @user.role = 10
-      if @user.save
-        flash[:notice] = "User '#{@user.login}' was created"
-        redirect_to users_path
-      else
-        render :action => 'new'
-      end
-    end
+    # def create
+    #   @user = Cms::User.new(cms_user_params)
+    #   @user.login = @user.email
+    #   @user.role = 10
+    #   if @user.save
+    #     flash[:notice] = "User '#{@user.login}' was created"
+    #     redirect_to users_path
+    #   else
+    #     render :action => 'new'
+    #   end
+    # end
 
     def change_password
       user
