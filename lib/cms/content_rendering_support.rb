@@ -29,7 +29,8 @@ module Cms
 
     def handle_not_found_on_page(exception)
       logger.warn "Resource not found: Returning the 404 page."
-      handle_error_with_cms_page(Cms::ErrorPages::NOT_FOUND_PATH, exception, :not_found)
+      redirect_to '/', notice: "Page not found on server"
+      #handle_error_with_cms_page(Cms::ErrorPages::NOT_FOUND_PATH, exception, :not_found)
     end
 
     def handle_access_denied_on_page(exception)
