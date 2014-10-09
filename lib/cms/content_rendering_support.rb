@@ -35,13 +35,15 @@ module Cms
 
     def handle_access_denied_on_page(exception)
       logger.warn "Access denied for user '#{current_user.login}': Returning the 403 page."
-      handle_error_with_cms_page(Cms::ErrorPages::FORBIDDEN_PATH, exception, :forbidden)
+      redirect_to '/', notice: "You don't have any sufficient rights to access this page"
+      #handle_error_with_cms_page(Cms::ErrorPages::FORBIDDEN_PATH, exception, :forbidden)
     end
 
     def handle_server_error_on_page(exception)
       logger.error "An Unexpected exception occurred: #{exception.message}\n"
       logger.error "#{exception.backtrace.join("\n")}\n"
-      handle_error_with_cms_page(Cms::ErrorPages::SERVER_ERROR_PATH, exception, :internal_server_error)
+      redirect_to '/', notice: "Some exception occured"
+      #handle_error_with_cms_page(Cms::ErrorPages::SERVER_ERROR_PATH, exception, :internal_server_error)
     end
 
     private
