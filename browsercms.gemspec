@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
       GPL.txt
       README.markdown
   }
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 2.0'
 
   s.files = Dir["{app,bin,db,doc,lib,vendor}/**/*"]
   s.files += Dir[".yardopts"]
@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
 
   s.executables = ["bcms", "browsercms"]
 
-  s.add_dependency("rails", "~> 4.0.0")
+  s.add_dependency("rails", "~> 4.1.8")
   s.add_dependency("devise", "~> 3.0")
   s.add_dependency("sass-rails")
   s.add_dependency("bootstrap-sass", '~> 3.1.1')

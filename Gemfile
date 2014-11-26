@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.5'
 
 # Load this project as a gem.
 gemspec
@@ -11,6 +11,7 @@ gem 'bluecloth', :groups=>[:development, :test] # For YARD
 # gem 'query_reviewer' # Enable for performance tuning
 
 gem "thin" # To avoid annoying Ruby 1.9.3/Rails/Webrick warnings - See http://stackoverflow.com/questions/7082364/what-does-warn-could-not-determine-content-length-of-response-body-mean-and-h
+gem 'sass-rails', '~> 4.0.5'
 
 # For testing behavior in production
 group :production do
@@ -19,7 +20,8 @@ end
 
 group :development do
   gem 'rake'
-  gem 'debugger'
+  # gem 'debugger'
+  gem 'byebug'
   gem 'quiet_assets'
 end
 group :test, :development do
